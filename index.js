@@ -11,7 +11,7 @@ outreach.crawlJobDir(_crawlJobDir);
 setInterval(()=>{
   host.getAll().then((hosts)=>{
     hosts.forEach((host)=>{
-      if(host.id !== 4){
+      if(host.online && host.active){
         host.url = 'http://' + host.host + '/' + host.feed_uri;
         host.download_pattern = new RegExp(host.download_pattern);
         outreach.parseFeed(host).then((links)=>{
